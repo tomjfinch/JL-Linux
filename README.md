@@ -5,7 +5,15 @@ The original [JL by rampaa](https://github.com/rampaa/JL) is Windows-only. This 
 
 ## Install on Linux
 
-**Prebuilt:** open the [Actions tab](https://github.com/tomjfinch/JL-Linux/actions/workflows/linux.yml), pick the latest successful "Linux build" run, and download `JL-linux-x64` (or `JL-linux-arm64`) under Artifacts. The download bundles .NET, so nothing else is required. Unpack it into your home folder and run `./JL-linux-x64/JL`.
+Paste this into a terminal:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/tomjfinch/JL-Linux/master/install.sh | bash
+```
+
+That downloads the latest build, installs it to `~/.local/share/JL`, and adds JL to your application menu. Run the same command again to update; your settings and dictionaries are kept. The build bundles .NET, so nothing else is required.
+
+You can also download the `.tar.gz` yourself from the [Releases page](https://github.com/tomjfinch/JL-Linux/releases/latest), unpack it and run `JL`.
 
 **From source** (needs the .NET 9 SDK or newer):
 
@@ -14,8 +22,6 @@ git clone https://github.com/tomjfinch/JL-Linux.git
 cd JL-Linux
 ./JL.Linux/build.sh --install
 ```
-
-This installs JL to `~/.local/share/JL` and adds it to your application menu.
 
 Recommended extras: `mpv` (word audio), `wl-clipboard` (clipboard capture on Wayland) and a Japanese font such as Noto Sans CJK.
 
