@@ -1,0 +1,5 @@
+# The repo-wide .editorconfig is tuned for the Windows project.
+# Keep its formatting conventions, but don't fail the Linux build on analyzer rules.
+[*.cs]
+dotnet_analyzer_diagnostic.severity = none
+dotnet_naming_rule.sanity_check_uncovered_field_case_rule.severity = none

@@ -1,7 +1,34 @@
-# JL
+# JL for Linux
+JL is a program for looking up Japanese words and expressions. This fork rebuilds it to run natively on Linux.
+
+The original [JL by rampaa](https://github.com/rampaa/JL) is Windows-only. This version keeps JL's dictionary engine (`JL.Core`) unchanged and replaces the Windows interface with a new one built on [Avalonia](https://avaloniaui.net/), a cross-platform UI toolkit. It works on X11 and Wayland desktops (GNOME, KDE, Sway, Hyprland and others).
+
+## Install on Linux
+
+**Prebuilt:** open the [Actions tab](https://github.com/tomjfinch/JL-Linux/actions/workflows/linux.yml), pick the latest successful "Linux build" run, and download `JL-linux-x64` (or `JL-linux-arm64`) under Artifacts. The download bundles .NET, so nothing else is required. Unpack it into your home folder and run `./JL-linux-x64/JL`.
+
+**From source** (needs the .NET 9 SDK or newer):
+
+```sh
+git clone https://github.com/tomjfinch/JL-Linux.git
+cd JL-Linux
+./JL.Linux/build.sh --install
+```
+
+This installs JL to `~/.local/share/JL` and adds it to your application menu.
+
+Recommended extras: `mpv` (word audio), `wl-clipboard` (clipboard capture on Wayland) and a Japanese font such as Noto Sans CJK.
+
+See [JL.Linux/README.md](JL.Linux/README.md) for usage, keyboard shortcuts, Wayland notes, moving over a Windows setup, and what isn't ported yet.
+
+---
+
+*Everything below is the original JL README, which describes the Windows version.*
+
+## About JL
 JL is a program for looking up Japanese words and expressions. Inspired by [Nazeka](https://github.com/wareya/nazeka) and [Chiitrans Lite](https://github.com/alexbft/chiitrans).
 
-Download from the [releases page](https://github.com/rampaa/JL/releases).
+The Windows version can be downloaded from the original project's [releases page](https://github.com/rampaa/JL/releases).
 
 ## Screenshots
 <img src="https://github.com/user-attachments/assets/8787b37f-1b9f-4f79-ba41-ea03dd1160cf">

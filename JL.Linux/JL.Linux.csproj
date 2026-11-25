@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>JL</AssemblyName>
+    <RootNamespace>JL.Linux</RootNamespace>
+    <PackageId>JL.Linux</PackageId>
+    <Platforms>AnyCPU;x64;ARM64</Platforms>
+    <BuiltInComInteropSupport>false</BuiltInComInteropSupport>
+
+    <!--
+      Directory.Build.props turns on every analyzer and treats warnings as errors.
+      That is right for upstream's WPF project, but this front end is compiled
+      against a different UI toolkit, so analyzer noise must not break the build.
+    -->
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+    <EnableNETAnalyzers>false</EnableNETAnalyzers>
+    <AnalysisLevel>none</AnalysisLevel>
+    <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
+    <NoWarn>$(NoWarn);CS0618;CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.3.*" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.3.*" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../JL.Core/JL.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="jl.desktop">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="jl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

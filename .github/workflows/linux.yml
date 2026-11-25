@@ -1,0 +1,47 @@
+name: Linux build
+
+on:
+  push:
+    paths:
+      - 'JL.Core/**'
+      - 'JL.Linux/**'
+      - '.github/workflows/linux.yml'
+  pull_request:
+    paths:
+      - 'JL.Core/**'
+      - 'JL.Linux/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - rid: linux-x64
+            platform: x64
+          - rid: linux-arm64
+            platform: ARM64
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Publish
+        run: >
+          dotnet publish JL.Linux/JL.Linux.csproj
+          -c Release -r ${{ matrix.rid }} --self-contained true
+          -p:Platform=${{ matrix.platform }}
+          -p:TreatWarningsAsErrors=false
+          -o out/JL-${{ matrix.rid }}
+
+      - name: Package
+        run: tar -C out -czf JL-${{ matrix.rid }}.tar.gz JL-${{ matrix.rid }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: JL-${{ matrix.rid }}
+          path: JL-${{ matrix.rid }}.tar.gz

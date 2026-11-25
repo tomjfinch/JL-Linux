@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=JL
+GenericName=Japanese Lookup
+Comment=Look up Japanese words and expressions from copied text
+Exec=@EXEC@
+Icon=@ICON@
+Terminal=false
+Categories=Education;Languages;Utility;
+Keywords=japanese;dictionary;anki;yomichan;textractor;
+StartupWMClass=JL
